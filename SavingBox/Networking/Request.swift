@@ -28,7 +28,7 @@ extension Request {
     var method: HTTPMethod { return .get }
     var scheme: String { return "https" }
     var headers: [String: String] { return [:] }
-    var host: String { return "europe-west1-revolut-230009.cloudfunctions.net" }
+    var host: String { return "https://api-test02.moneyboxapp.com/" }
     var body: Data? { return nil }
 }
 

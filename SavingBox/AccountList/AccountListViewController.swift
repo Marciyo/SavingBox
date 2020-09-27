@@ -1,22 +1,20 @@
 //
-//  ViewController.swift
+//  AccountListViewController.swift
 //  SavingBox
 //
-//  Created by Marcel Mierzejewski on 24/09/2020.
+//  Created by Marcel Mierzejewski on 27/09/2020.
 //  Copyright © 2020 Marcel Mierzejewski. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+final class AccountListViewController: UIViewController {
+
+    var viewModel: AccountListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .blue
     }
-
-
 }
-
