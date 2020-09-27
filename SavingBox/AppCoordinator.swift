@@ -29,21 +29,42 @@ final class AppCoordinator: Coordinator {
     private func startLogin() {
         let vc = LoginViewController()
         vc.viewModel = LoginViewModel(dependencies: dependencies)
-        rootViewController = UINavigationController(rootViewController: vc)
+        vc.coordinator = self
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.navigationBar.prefersLargeTitles = true
+        rootViewController = navigationController
         window.rootViewController = rootViewController
     }
     
     private func startAccountList() {
         let vc = AccountListViewController()
         vc.viewModel = AccountListViewModel(dependencies: dependencies)
-        rootViewController = UINavigationController(rootViewController: vc)
+        vc.coordinator = self
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.navigationBar.prefersLargeTitles = true
+        rootViewController = navigationController
         window.rootViewController = rootViewController
     }
     
     private func startAccountDetails(for account: String) {
         let vc = AccountDetailsViewController()
         vc.viewModel = AccountDetailsViewModel(dependencies: dependencies)
-        rootViewController = UINavigationController(rootViewController: vc)
-        window.rootViewController?.navigationController?.pushViewController(vc, animated: true)
+        rootViewController.pushViewController(vc, animated: true)
+    }
+}
+
+extension AppCoordinator: AccountListCoordinatorDelegate {
+    func didLogout(_ viewController: UIViewController) {
+        startLogin()
+    }
+    
+    func didChooseAccount(_ viewController: UIViewController, accountName: String) {
+        startAccountDetails(for: accountName)
+    }
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func didSuccesfullyLogin(_ viewController: UIViewController) {
+        startAccountList()
     }
 }

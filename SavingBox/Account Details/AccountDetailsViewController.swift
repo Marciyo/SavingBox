@@ -10,11 +10,23 @@ import UIKit
 
 final class AccountDetailsViewController: UIViewController {
 
+    @IBOutlet private weak var accountNameLabel: UILabel!
+    @IBOutlet private weak var planValueLabel: UILabel!
+    @IBOutlet private weak var moneyboxValueLabel: UILabel!
+    @IBOutlet private weak var addButton: UIButton!
+    
     var viewModel: AccountDetailsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Individual account"
 
-        // Do any additional setup after loading the view.
+        addButton.layer.masksToBounds = true
+        addButton.layer.cornerRadius = 8
+    }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        print("Add 10£")
     }
 }

@@ -14,6 +14,8 @@ final class AccountListViewModel {
     private let apiClient: APIClient
     private var userDefaults: UserDefaultsProtocol
     
+    var accountList: [String] = ["First", "Second", "Third", "Fourth"]
+    
     init(dependencies: Dependencies) {
         apiClient = APIClient(session: dependencies.networkSession)
         userDefaults = dependencies.userDefaults
