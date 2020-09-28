@@ -9,8 +9,10 @@
 import UIKit
 
 final class AccountListTableViewCell: UITableViewCell {
-
     @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var accountNameLabel: UILabel!
+    @IBOutlet private weak var planValueLabel: UILabel!
+    @IBOutlet private weak var moneyboxLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,12 @@ final class AccountListTableViewCell: UITableViewCell {
 
         containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true
+    }
+    
+    func setup(with productResponse: ProductResponse) {
+        accountNameLabel.text = productResponse.product.name
+        planValueLabel.text = "Plan Value: £\(productResponse.planValue)"
+        moneyboxLabel.text = "Moneybox: £\(productResponse.moneybox)"
     }
 }
 

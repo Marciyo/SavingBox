@@ -9,7 +9,7 @@
 import Foundation
 
 final class AccountDetailsViewModel {
-    typealias Dependencies = HasUserDefaultsProtocol & HasNetworkManager
+    typealias Dependencies = HasUserDefaultsService & HasNetworkService
     
     private let apiClient: APIClient
     private var userDefaults: UserDefaultsProtocol

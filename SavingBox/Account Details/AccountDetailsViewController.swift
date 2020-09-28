@@ -26,6 +26,10 @@ final class AccountDetailsViewController: UIViewController {
         addButton.layer.cornerRadius = 8
     }
     
+    deinit {
+        print("deinited acc details")
+    }
+    
     @IBAction func addButtonAction(_ sender: Any) {
         print("Add 10£")
     }

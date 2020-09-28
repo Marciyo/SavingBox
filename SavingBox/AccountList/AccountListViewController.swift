@@ -16,23 +16,54 @@ protocol AccountListCoordinatorDelegate: class {
 final class AccountListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var welcomeLabel: UILabel!
     
     var viewModel: AccountListViewModel!
     weak var coordinator: AccountListCoordinatorDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupBindings()
+        addNavigationBarItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getInvestorProducts()
+    }
+    
+    private func setupUI() {
         title = "User accounts"
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(AccountListTableViewCell.self)
         
-        addNavigationBarItems()
+        welcomeLabel.text = viewModel.welcomeText
+    }
+    
+    private func setupBindings() {
+        viewModel.investorProductsResponse.bindAndFire { [weak self] (response) in
+            guard let response = response else { return }
+            print("Obtained response: \(response)")
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        viewModel.error.bindAndFire { [weak self] (error) in
+            guard let error = error else { return }
+            let alertData = AlertData(title: "Login error",
+                                      message: error.localizedDescription,
+                                      acceptButtonTitle: "") { (_) in }
+            self?.showAlert(data: alertData)
+        }
     }
     
     deinit {
-        print("deinited")
+        print("deinited account list")
     }
     
     private func addNavigationBarItems() {
@@ -55,12 +86,12 @@ final class AccountListViewController: UIViewController {
 
 extension AccountListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.accountList.count
+        return viewModel.investorProductsResponse.value?.productResponses.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AccountListTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-//        cell.setup(with: Data)
+        cell.setup(with: viewModel.productResponse(for: indexPath))
         return cell
     }
     

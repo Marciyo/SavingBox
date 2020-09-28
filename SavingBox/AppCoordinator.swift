@@ -36,9 +36,9 @@ final class AppCoordinator: Coordinator {
         window.rootViewController = rootViewController
     }
     
-    private func startAccountList() {
+    private func startAccountList(for user: User) {
         let vc = AccountListViewController()
-        vc.viewModel = AccountListViewModel(dependencies: dependencies)
+        vc.viewModel = AccountListViewModel(user: user, dependencies: dependencies)
         vc.coordinator = self
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.navigationBar.prefersLargeTitles = true
@@ -55,7 +55,12 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: AccountListCoordinatorDelegate {
     func didLogout(_ viewController: UIViewController) {
+        clearUserData()
         startLogin()
+    }
+    
+    private func clearUserData() {
+        dependencies.keychainService.bearerToken = nil
     }
     
     func didChooseAccount(_ viewController: UIViewController, accountName: String) {
@@ -64,7 +69,7 @@ extension AppCoordinator: AccountListCoordinatorDelegate {
 }
 
 extension AppCoordinator: LoginCoordinatorDelegate {
-    func didSuccesfullyLogin(_ viewController: UIViewController) {
-        startAccountList()
+    func didSuccesfullyLogin(_ viewController: UIViewController, withUser user: User) {
+        startAccountList(for: user)
     }
 }

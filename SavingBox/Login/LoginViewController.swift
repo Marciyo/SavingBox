@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginCoordinatorDelegate: class {
-    func didSuccesfullyLogin(_ viewController: UIViewController)
+    func didSuccesfullyLogin(_ viewController: UIViewController, withUser user: User)
 }
 
 final class LoginViewController: UIViewController {
@@ -22,22 +22,44 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
+        setupBindings()
+    }
+    
+    private func setupUI() {
         title = "Login"
         
         emailTextField.text = "test+ios@moneyboxapp.com"
         passwordTextField.text = "P455word12"
         passwordTextField.isSecureTextEntry = true
-        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        loginButtonAction(self)
+    deinit {
+        print("deinited loginvc")
+    }
+    
+    private func setupBindings() {
+        viewModel.currentUser.bindAndFire { [weak self] (user) in
+            guard let user = user else { return }
+            print("Obtained user: \(user)")
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.coordinator?.didSuccesfullyLogin(self, withUser: user)
+            }
+        }
+        
+        viewModel.error.bindAndFire { [weak self] (error) in
+            guard let error = error else { return }
+            let alertData = AlertData(title: "Login error",
+                                      message: error.localizedDescription,
+                                      acceptButtonTitle: "") { (_) in }
+            self?.showAlert(data: alertData)
+        }
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
         viewModel.login(email: emailTextField.text!, password: passwordTextField.text!)
-//        coordinator?.didSuccesfullyLogin(self)
     }
 }
+
+extension LoginViewController: AlertPresentable { }

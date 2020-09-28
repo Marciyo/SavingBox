@@ -9,24 +9,36 @@
 import Foundation
 
 final class LoginViewModel {
-    typealias Dependencies = HasUserDefaultsProtocol & HasNetworkManager
+    typealias Dependencies = HasNetworkService & HasKeychainService
     
     private let apiClient: APIClient
-    private var userDefaults: UserDefaultsProtocol
+    private var keychainService: KeychainService
+    
+    let currentUser = Dynamic<User?>(nil)
+    let error = Dynamic<Error?>(nil)
     
     init(dependencies: Dependencies) {
         apiClient = APIClient(session: dependencies.networkSession)
-        userDefaults = dependencies.userDefaults
+        keychainService = dependencies.keychainService
     }
     
     func login(email: String, password: String) {
         let request = UserLoginRequest(email: email, password: password)
-        apiClient.load(request) { result in
+        apiClient.load(request) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case let .success(data):
-                let decoded = try! JSONDecoder().decode(UserLoginResponse.self, from: data)
-                print(decoded)
+                do  {
+                    let response = try JSONDecoder().decode(UserLoginResponse.self, from: data)
+                    self.currentUser.value = response.user
+                    self.keychainService.bearerToken = response.session.bearerToken
+                } catch {
+                    self.error.value = error
+                    assertionFailure(error.localizedDescription)
+                }
+               
             case let .failure(error):
+                self.error.value = error
                 assertionFailure(error.localizedDescription)
             }
         }

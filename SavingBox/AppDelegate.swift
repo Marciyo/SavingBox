@@ -8,17 +8,22 @@
 
 import UIKit
 
-struct AppDependency: HasUserDefaultsProtocol, HasNetworkManager {
+struct AppDependency: HasUserDefaultsService, HasNetworkService, HasKeychainService {
     let userDefaults: UserDefaultsProtocol
     let networkSession: NetworkSession
+    let keychainService: KeychainService
 }
 
-protocol HasUserDefaultsProtocol {
+protocol HasUserDefaultsService {
     var userDefaults: UserDefaultsProtocol { get }
 }
 
-protocol HasNetworkManager {
+protocol HasNetworkService {
     var networkSession: NetworkSession { get }
+}
+
+protocol HasKeychainService {
+    var keychainService: KeychainService { get }
 }
 
 @UIApplicationMain
@@ -30,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var dependencies: AppDependency = {
         let userDefaults: UserDefaultsProtocol = UserDefaults.standard
         let apiClient: NetworkSession = URLSession.shared
-
-        return AppDependency(userDefaults: userDefaults, networkSession: apiClient)
+        let keychainService: KeychainService = KeychainService()
+        return AppDependency(userDefaults: userDefaults, networkSession: apiClient, keychainService: keychainService)
     }()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
