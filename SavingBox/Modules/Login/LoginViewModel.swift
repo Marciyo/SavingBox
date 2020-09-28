@@ -12,7 +12,7 @@ final class LoginViewModel {
     typealias Dependencies = HasNetworkService & HasKeychainService
     
     private let apiClient: APIClient
-    private var keychainService: KeychainService
+    private var keychainService: KeychainServiceProtocol
     
     let currentUser = Dynamic<User?>(nil)
     let error = Dynamic<Error?>(nil)
@@ -34,12 +34,10 @@ final class LoginViewModel {
                     self.keychainService.bearerToken = response.session.bearerToken
                 } catch {
                     self.error.value = error
-                    assertionFailure(error.localizedDescription)
                 }
                
             case let .failure(error):
                 self.error.value = error
-                assertionFailure(error.localizedDescription)
             }
         }
     }

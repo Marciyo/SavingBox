@@ -12,7 +12,7 @@ final class AccountListViewModel {
     typealias Dependencies = HasNetworkService & HasKeychainService
 
     private let apiClient: APIClient
-    private var keychainService: KeychainService
+    private var keychainService: KeychainServiceProtocol
     
     var investorProductsResponse = Dynamic<InvestorProductsResponse?>(nil)
     let error = Dynamic<Error?>(nil)
@@ -34,10 +34,7 @@ final class AccountListViewModel {
     }
     
     func getInvestorProducts() {
-        guard let token = keychainService.bearerToken else {
-            assertionFailure("User should have token at this stage")
-            return
-        }
+        guard let token = keychainService.bearerToken else { return }
         let request = InvestorProductsRequest(token: token)
         apiClient.load(request) { [weak self] result in
             guard let self = self else { return }
@@ -48,12 +45,10 @@ final class AccountListViewModel {
                     self.investorProductsResponse.value = response
                 } catch {
                     self.error.value = error
-                    assertionFailure(error.localizedDescription)
                 }
                
             case let .failure(error):
                 self.error.value = error
-                assertionFailure(error.localizedDescription)
             }
         }
     }

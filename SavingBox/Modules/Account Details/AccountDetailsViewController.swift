@@ -46,13 +46,21 @@ final class AccountDetailsViewController: UIViewController {
                 self.addButton.setTitle("Add £\(amount)", for: .normal)
             }
         }
-    }
-    
-    deinit {
-        print("deinited acc details")
+        
+        viewModel.error.bindAndFire { [weak self] (error) in
+            guard let error = error else { return }
+            let alertData = AlertData(title: "Payment error",
+                                      message: error.localizedDescription,
+                                      acceptButtonTitle: "") { (_) in }
+            DispatchQueue.main.async {
+                self?.showAlert(data: alertData)
+            }
+        }
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
         viewModel.postOneOffPayment(amount: 10)
     }
 }
+
+extension AccountDetailsViewController: AlertPresentable { }

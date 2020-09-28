@@ -9,7 +9,11 @@
 import Foundation
 import KeychainSwift
 
-final class KeychainService {
+protocol KeychainServiceProtocol {
+    var bearerToken: String? { get set }
+}
+
+final class KeychainService: KeychainServiceProtocol {
     private enum Keys: String {
         case bearerToken = "BearerToken"
     }

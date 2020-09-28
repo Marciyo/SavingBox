@@ -12,7 +12,7 @@ final class AccountDetailsViewModel {
     typealias Dependencies = HasNetworkService & HasKeychainService
     
     private let apiClient: APIClient
-    private var keychainService: KeychainService
+    private var keychainService: KeychainServiceProtocol
     private let productResponse: ProductResponse
     
     let paymentAmount = Dynamic<Double>(10)
@@ -24,7 +24,7 @@ final class AccountDetailsViewModel {
     }
     
     var planValue: String {
-        "Plan Value: \(productResponse.planValue)"
+        "Plan Value: £\(productResponse.planValue)"
     }
     
     init(product: ProductResponse, dependencies: Dependencies) {
@@ -35,10 +35,7 @@ final class AccountDetailsViewModel {
     }
     
     func postOneOffPayment(amount: Double) {
-        guard let token = keychainService.bearerToken else {
-            assertionFailure("User should have token at this stage")
-            return
-        }
+        guard let token = keychainService.bearerToken else { return }
         let request = OneOffPaymentRequest(token: token, amount: amount,
                                            productId: productResponse.id)
         apiClient.load(request) { [weak self] result in
@@ -56,7 +53,6 @@ final class AccountDetailsViewModel {
                
             case let .failure(error):
                 self.error.value = error
-                assertionFailure(error.localizedDescription)
             }
         }
     }

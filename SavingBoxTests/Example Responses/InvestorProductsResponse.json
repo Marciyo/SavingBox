@@ -1,0 +1,121 @@
+{
+    "MoneyboxEndOfTaxYear": "2021-03-31T00:00:00.000",
+    "TotalPlanValue": 3990.550000,
+    "TotalEarnings": 8.550000,
+    "TotalContributionsNet": 3982.00,
+    "TotalEarningsAsPercentage": 0.21,
+    "ProductResponses": [{
+        "Id": 8043,
+        "PlanValue": 2011.86,
+        "Moneybox": 200.00,
+        "SubscriptionAmount": 0.00,
+        "TotalFees": 0.10,
+        "IsSelected": false,
+        "IsFavourite": false,
+        "CollectionDayMessage": "2 days until collection",
+        "Product": {
+            "Id": 1,
+            "Name": "ISA",
+            "CategoryType": "Investment",
+            "Type": "Isa",
+            "FriendlyName": "Stocks & Shares ISA",
+            "CanWithdraw": true,
+            "ProductHexCode": "#c5d561",
+            "AnnualLimit": 20000.00,
+            "DepositLimit": 0.00,
+            "MinimumWeeklyDeposit": 2.0,
+            "MaximumWeeklyDeposit": 400.0,
+            "Documents": {
+                "KeyFeaturesUrl": "https://api-test02.moneyboxapp.com/docs/KeyFeaturesDocumentAll"
+            },
+            "State": "None"
+        },
+        "InvestorAccount": {
+            "ContributionsNet": 2005.00,
+            "EarningsNet": 6.86,
+            "EarningsAsPercentage": 0.34
+        },
+        "Personalisation": {
+            "QuickAddDeposit": {
+                "Amount": 10.00
+            },
+            "HideAccounts": {
+                "Enabled": false,
+                "IsHidden": false,
+                "Sequence": 1
+            }
+        },
+        "Contributions": {
+            "Status": "Enabled"
+        },
+        "MoneyboxCircle": {
+            "State": "None"
+        },
+        "State": "None"
+    }, {
+        "Id": 8042,
+        "PlanValue": 1978.690000,
+        "Moneybox": 90.00,
+        "SubscriptionAmount": 20.00,
+        "TotalFees": 0.00,
+        "IsSelected": true,
+        "IsFavourite": true,
+        "CollectionDayMessage": "2 days until collection",
+        "Product": {
+            "Lisa": {
+                "MaximumBonus": 1000.0000
+            },
+            "Id": 7,
+            "Name": "Lisa Plus",
+            "CategoryType": "Cash",
+            "Type": "Lisa",
+            "FriendlyName": "Lifetime ISA",
+            "CanWithdraw": false,
+            "ProductHexCode": "#49bfbd",
+            "AnnualLimit": 4000.00,
+            "DepositLimit": 0.00,
+            "MinimumWeeklyDeposit": 2.0,
+            "MaximumWeeklyDeposit": 400.0,
+            "InterestRate": "0.5% AER",
+            "InterestRateAmount": 0.005000,
+            "IntroductoryBonus": {
+                "Rate": "+0.5%",
+                "Amount": 0.005000,
+                "Description": "The introductory bonus runs for one year from the day you sign up for your Moneybox Cash Lifetime ISA. It is calculated daily and will be paid into your account at the end of that year. For more information, visit the Help section or contact us via the in-app chat."
+            },
+            "LogoUrl": "https://assets.moneyboxapp.com/images/app-assets/InvestecIconRebrand.png",
+            "Documents": {
+                "KeyFeaturesUrl": "https://api-test02.moneyboxapp.com/docs/KeyFeaturesDocumentLISACashInvestec2"
+            },
+            "State": "None",
+            "Fund": {
+                "FundId": 37,
+                "Name": "Investec",
+                "LogoUrl": "https://assets.moneyboxapp.com/images/app-assets/InvestecIconRebrand.png"
+            }
+        },
+        "InvestorAccount": {
+            "TodaysInterest": 0.0542,
+            "ContributionsNet": 1977.00,
+            "EarningsNet": 1.690000,
+            "EarningsAsPercentage": 0.01
+        },
+        "Personalisation": {
+            "QuickAddDeposit": {
+                "Amount": 10.00
+            },
+            "HideAccounts": {
+                "Enabled": false,
+                "IsHidden": false,
+                "Sequence": 2
+            }
+        },
+        "Contributions": {
+            "Status": "Enabled"
+        },
+        "MoneyboxCircle": {
+            "State": "None"
+        },
+        "State": "None"
+    }]
+}

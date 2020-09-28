@@ -58,12 +58,10 @@ final class AccountListViewController: UIViewController {
             let alertData = AlertData(title: "Login error",
                                       message: error.localizedDescription,
                                       acceptButtonTitle: "") { (_) in }
-            self?.showAlert(data: alertData)
+            DispatchQueue.main.async {
+                self?.showAlert(data: alertData)
+            }
         }
-    }
-    
-    deinit {
-        print("deinited account list")
     }
     
     private func addNavigationBarItems() {

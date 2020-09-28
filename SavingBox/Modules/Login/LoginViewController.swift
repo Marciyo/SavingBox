@@ -34,10 +34,6 @@ final class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
     }
     
-    deinit {
-        print("deinited loginvc")
-    }
-    
     private func setupBindings() {
         viewModel.currentUser.bindAndFire { [weak self] (user) in
             guard let user = user else { return }
@@ -53,7 +49,9 @@ final class LoginViewController: UIViewController {
             let alertData = AlertData(title: "Login error",
                                       message: error.localizedDescription,
                                       acceptButtonTitle: "") { (_) in }
-            self?.showAlert(data: alertData)
+            DispatchQueue.main.async {
+                self?.showAlert(data: alertData)
+            }
         }
     }
     
