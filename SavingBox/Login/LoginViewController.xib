@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="SavingBox" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="2B6-DN-9pP" id="HiN-sE-Frm"/>
+                <outlet property="passwordTextField" destination="4ga-yb-B9d" id="xRr-uP-3md"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -41,7 +43,7 @@
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRG-c1-5gq">
                     <rect key="frame" x="83" y="559" width="248" height="60"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="SR4-43-QO4"/>
                     </constraints>
@@ -54,7 +56,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="NRG-c1-5gq" firstAttribute="centerX" secondItem="fmn-Zu-7f5" secondAttribute="centerX" id="GNE-df-tqz"/>
                 <constraint firstItem="fmn-Zu-7f5" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MtK-S2-naN"/>

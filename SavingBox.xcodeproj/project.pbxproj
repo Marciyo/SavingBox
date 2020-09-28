@@ -31,6 +31,8 @@
 		9A6610812520F8CD00E26433 /* AccountListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66107F2520F8CD00E26433 /* AccountListTableViewCell.swift */; };
 		9A6610822520F8CD00E26433 /* AccountListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6610802520F8CD00E26433 /* AccountListTableViewCell.xib */; };
 		9A6610842520FC1D00E26433 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A6610832520FC1D00E26433 /* ReusableView.swift */; };
+		9A661087252116D200E26433 /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A661086252116D200E26433 /* UserLoginResponse.swift */; };
+		9A66108B2521186700E26433 /* UserLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A66108A2521186700E26433 /* UserLoginRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		9A66107F2520F8CD00E26433 /* AccountListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewCell.swift; sourceTree = "<group>"; };
 		9A6610802520F8CD00E26433 /* AccountListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountListTableViewCell.xib; sourceTree = "<group>"; };
 		9A6610832520FC1D00E26433 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		9A661086252116D200E26433 /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
+		9A66108A2521186700E26433 /* UserLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +121,6 @@
 				9A51D61B2520E8B9004A3719 /* AppCoordinator.swift */,
 				9A51D5F52520E760004A3719 /* Networking */,
 				9A51D5DE2520E326004A3719 /* Helpers */,
-				9A51D62F2520EBD6004A3719 /* Components */,
 				9A51D6182520E848004A3719 /* Account Details */,
 				9A51D60D2520E823004A3719 /* AccountList */,
 				9A51D6042520E7ED004A3719 /* Login */,
@@ -153,7 +156,9 @@
 		9A51D5F52520E760004A3719 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9A661085252116C000E26433 /* Models */,
 				9A51D5F12520E442004A3719 /* Request.swift */,
+				9A66108A2521186700E26433 /* UserLoginRequest.swift */,
 				9A51D5ED2520E43C004A3719 /* APIClient.swift */,
 			);
 			path = Networking;
@@ -190,13 +195,6 @@
 			path = "Account Details";
 			sourceTree = "<group>";
 		};
-		9A51D62F2520EBD6004A3719 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		9A66107E2520F88300E26433 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +202,14 @@
 				9A6610802520F8CD00E26433 /* AccountListTableViewCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		9A661085252116C000E26433 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A661086252116D200E26433 /* UserLoginResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +329,9 @@
 				9A42E55A251CF5930091FA06 /* AppDelegate.swift in Sources */,
 				9A51D5F72520E77E004A3719 /* Keychain.swift in Sources */,
 				9A51D5E32520E326004A3719 /* DynamicBind.swift in Sources */,
+				9A66108B2521186700E26433 /* UserLoginRequest.swift in Sources */,
 				9A51D6202520E91D004A3719 /* LoginViewModel.swift in Sources */,
+				9A661087252116D200E26433 /* UserLoginResponse.swift in Sources */,
 				9A51D5E52520E326004A3719 /* AlertPresentable.swift in Sources */,
 				9A51D5E62520E326004A3719 /* Coordinator.swift in Sources */,
 				9A51D6102520E83D004A3719 /* AccountDetailsViewController.swift in Sources */,

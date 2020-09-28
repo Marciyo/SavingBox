@@ -15,8 +15,13 @@ final class AccountListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        containerView.layer.borderColor = UIColor.lightGray.cgColor
-        containerView.layer.borderWidth = 2
+        if #available(iOS 13.0, *) {
+            containerView.backgroundColor = .secondarySystemBackground
+        } else {
+            containerView.layer.borderColor = UIColor.lightGray.cgColor
+            containerView.layer.borderWidth = 2
+        }
+
         containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true
     }

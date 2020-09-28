@@ -18,4 +18,17 @@ final class LoginViewModel {
         apiClient = APIClient(session: dependencies.networkSession)
         userDefaults = dependencies.userDefaults
     }
+    
+    func login(email: String, password: String) {
+        let request = UserLoginRequest(email: email, password: password)
+        apiClient.load(request) { result in
+            switch result {
+            case let .success(data):
+                let decoded = try! JSONDecoder().decode(UserLoginResponse.self, from: data)
+                print(decoded)
+            case let .failure(error):
+                assertionFailure(error.localizedDescription)
+            }
+        }
+    }
 }

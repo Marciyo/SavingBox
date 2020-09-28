@@ -27,8 +27,13 @@ protocol Request {
 extension Request {
     var method: HTTPMethod { return .get }
     var scheme: String { return "https" }
-    var headers: [String: String] { return [:] }
-    var host: String { return "https://api-test02.moneyboxapp.com/" }
+    var headers: [String: String] {
+        ["AppId": "8cb2237d0679ca88db6464",
+        "Content-Type": "application/json",
+        "appVersion": "7.10.0",
+        "apiVersion": "3.0.0"]
+    }
+    var host: String { return "api-test02.moneyboxapp.com" }
     var body: Data? { return nil }
 }
 

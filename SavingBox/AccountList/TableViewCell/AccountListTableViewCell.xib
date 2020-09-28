@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-41-OkG" userLabel="ContainerView">
-                        <rect key="frame" x="0.0" y="3" width="320" height="107"/>
+                        <rect key="frame" x="0.0" y="11" width="320" height="91"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5jD-oU-nXu">
-                                <rect key="frame" x="8" y="8" width="304" height="91"/>
+                                <rect key="frame" x="8" y="8" width="304" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Stocks and Shares ISA" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY2-AT-BXX">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="20.5"/>
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moneybox: 50$" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ze-Rk-d8m">
-                                        <rect key="frame" x="0.0" y="57" width="304" height="34"/>
+                                        <rect key="frame" x="0.0" y="57" width="304" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -54,9 +54,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="xOV-41-OkG" secondAttribute="trailing" id="NuL-K8-DUg"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="xOV-41-OkG" secondAttribute="bottomMargin" id="Oqv-mk-V5m"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xOV-41-OkG" secondAttribute="bottom" id="Oqv-mk-V5m"/>
                     <constraint firstItem="xOV-41-OkG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="U5U-Jf-Rwp"/>
-                    <constraint firstItem="xOV-41-OkG" firstAttribute="topMargin" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bJr-dE-uVf"/>
+                    <constraint firstItem="xOV-41-OkG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bJr-dE-uVf"/>
                 </constraints>
                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
             </tableViewCellContentView>

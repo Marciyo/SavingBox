@@ -13,7 +13,10 @@ protocol LoginCoordinatorDelegate: class {
 }
 
 final class LoginViewController: UIViewController {
-
+    
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    
     var viewModel: LoginViewModel!
     weak var coordinator: LoginCoordinatorDelegate?
 
@@ -21,9 +24,20 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Login"
+        
+        emailTextField.text = "test+ios@moneyboxapp.com"
+        passwordTextField.text = "P455word12"
+        passwordTextField.isSecureTextEntry = true
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loginButtonAction(self)
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
-        coordinator?.didSuccesfullyLogin(self)
+        viewModel.login(email: emailTextField.text!, password: passwordTextField.text!)
+//        coordinator?.didSuccesfullyLogin(self)
     }
 }
