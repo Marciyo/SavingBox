@@ -46,9 +46,9 @@ final class AppCoordinator: Coordinator {
         window.rootViewController = rootViewController
     }
     
-    private func startAccountDetails(for account: String) {
+    private func startAccountDetails(for product: ProductResponse) {
         let vc = AccountDetailsViewController()
-        vc.viewModel = AccountDetailsViewModel(dependencies: dependencies)
+        vc.viewModel = AccountDetailsViewModel(product: product, dependencies: dependencies)
         rootViewController.pushViewController(vc, animated: true)
     }
 }
@@ -63,8 +63,8 @@ extension AppCoordinator: AccountListCoordinatorDelegate {
         dependencies.keychainService.bearerToken = nil
     }
     
-    func didChooseAccount(_ viewController: UIViewController, accountName: String) {
-        startAccountDetails(for: accountName)
+    func willOpenDetails(_ viewController: UIViewController, for product: ProductResponse) {
+        startAccountDetails(for: product)
     }
 }
 

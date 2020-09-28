@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AccountListCoordinatorDelegate: class {
-    func didChooseAccount(_ viewController: UIViewController, accountName: String)
+    func willOpenDetails(_ viewController: UIViewController, for product: ProductResponse)
     func didLogout(_ viewController: UIViewController)
 }
 
@@ -102,7 +102,7 @@ extension AccountListViewController: UITableViewDataSource {
 
 extension AccountListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.didChooseAccount(self, accountName: "\(indexPath)")
+        coordinator?.willOpenDetails(self, for: viewModel.productResponse(for: indexPath))
     }
 }
 

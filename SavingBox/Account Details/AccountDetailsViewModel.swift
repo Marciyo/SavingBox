@@ -9,13 +9,55 @@
 import Foundation
 
 final class AccountDetailsViewModel {
-    typealias Dependencies = HasUserDefaultsService & HasNetworkService
+    typealias Dependencies = HasNetworkService & HasKeychainService
     
     private let apiClient: APIClient
-    private var userDefaults: UserDefaultsProtocol
+    private var keychainService: KeychainService
+    private let productResponse: ProductResponse
     
-    init(dependencies: Dependencies) {
+    let paymentAmount = Dynamic<Double>(10)
+    let error = Dynamic<Error?>(nil)
+    let moneyBoxAmount: Dynamic<Double>
+    
+    var accountName: String {
+        productResponse.product.name
+    }
+    
+    var planValue: String {
+        "Plan Value: \(productResponse.planValue)"
+    }
+    
+    init(product: ProductResponse, dependencies: Dependencies) {
+        productResponse = product
         apiClient = APIClient(session: dependencies.networkSession)
-        userDefaults = dependencies.userDefaults
+        keychainService = dependencies.keychainService
+        moneyBoxAmount = Dynamic<Double>(product.moneybox)
+    }
+    
+    func postOneOffPayment(amount: Double) {
+        guard let token = keychainService.bearerToken else {
+            assertionFailure("User should have token at this stage")
+            return
+        }
+        let request = OneOffPaymentRequest(token: token, amount: amount,
+                                           productId: productResponse.id)
+        apiClient.load(request) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case let .success(data):
+                do  {
+                    let response = try JSONDecoder().decode(OneOffPaymentResponse.self,
+                                                            from: data)
+                    self.moneyBoxAmount.value = response.moneybox
+                } catch {
+                    self.error.value = error
+                    assertionFailure(error.localizedDescription)
+                }
+               
+            case let .failure(error):
+                self.error.value = error
+                assertionFailure(error.localizedDescription)
+            }
+        }
     }
 }

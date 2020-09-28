@@ -19,11 +19,33 @@ final class AccountDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        setupBindings()
+    }
+    
+    private func setupUI() {
         title = "Individual account"
-
+        
         addButton.layer.masksToBounds = true
         addButton.layer.cornerRadius = 8
+        accountNameLabel.text = viewModel.accountName
+    }
+    
+    private func setupBindings() {
+        viewModel.moneyBoxAmount.bindAndFire { [weak self] (moneyBoxAmount) in
+            print("New amount: \(moneyBoxAmount)")
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.moneyboxValueLabel.text = "Moneybox: £\(moneyBoxAmount)"
+            }
+        }
+        
+        viewModel.paymentAmount.bindAndFire { [weak self] (amount) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.addButton.setTitle("Add £\(amount)", for: .normal)
+            }
+        }
     }
     
     deinit {
@@ -31,6 +53,6 @@ final class AccountDetailsViewController: UIViewController {
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        print("Add 10£")
+        viewModel.postOneOffPayment(amount: 10)
     }
 }

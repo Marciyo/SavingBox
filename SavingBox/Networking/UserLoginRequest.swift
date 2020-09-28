@@ -32,7 +32,6 @@ struct UserLoginRequest: Request {
             body = try JSONEncoder().encode(requestBody)
         } catch {
             assertionFailure(error.localizedDescription)
-            body = nil
         }
     }
 }

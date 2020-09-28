@@ -11,6 +11,8 @@
 		9A2842B32522016600F83201 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2842B22522016600F83201 /* KeychainService.swift */; };
 		9A2842BF252214F100F83201 /* InvestorProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2842BE252214F100F83201 /* InvestorProductsRequest.swift */; };
 		9A2842C32522179900F83201 /* InvestorProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2842C22522179900F83201 /* InvestorProductsResponse.swift */; };
+		9A2842C92522226B00F83201 /* OneOffPaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2842C82522226B00F83201 /* OneOffPaymentRequest.swift */; };
+		9A2842CD252225F100F83201 /* OneOffPaymentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2842CC252225F100F83201 /* OneOffPaymentResponse.swift */; };
 		9A42E55A251CF5930091FA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A42E559251CF5930091FA06 /* AppDelegate.swift */; };
 		9A42E563251CF59D0091FA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A42E562251CF59D0091FA06 /* Assets.xcassets */; };
 		9A42E566251CF59D0091FA06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A42E564251CF59D0091FA06 /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 		9A2842B22522016600F83201 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		9A2842BE252214F100F83201 /* InvestorProductsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorProductsRequest.swift; sourceTree = "<group>"; };
 		9A2842C22522179900F83201 /* InvestorProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorProductsResponse.swift; sourceTree = "<group>"; };
+		9A2842C82522226B00F83201 /* OneOffPaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOffPaymentRequest.swift; sourceTree = "<group>"; };
+		9A2842CC252225F100F83201 /* OneOffPaymentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneOffPaymentResponse.swift; sourceTree = "<group>"; };
 		9A42E556251CF5930091FA06 /* SavingBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SavingBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A42E559251CF5930091FA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A42E562251CF59D0091FA06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				9A661085252116C000E26433 /* Models */,
 				9A66108A2521186700E26433 /* UserLoginRequest.swift */,
 				9A2842BE252214F100F83201 /* InvestorProductsRequest.swift */,
+				9A2842C82522226B00F83201 /* OneOffPaymentRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			children = (
 				9A661086252116D200E26433 /* UserLoginResponse.swift */,
 				9A2842C22522179900F83201 /* InvestorProductsResponse.swift */,
+				9A2842CC252225F100F83201 /* OneOffPaymentResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -349,7 +355,9 @@
 				9A66107C2520F07100E26433 /* LoginViewController.swift in Sources */,
 				9A2842BF252214F100F83201 /* InvestorProductsRequest.swift in Sources */,
 				9A51D5F22520E442004A3719 /* Request.swift in Sources */,
+				9A2842CD252225F100F83201 /* OneOffPaymentResponse.swift in Sources */,
 				9A6610812520F8CD00E26433 /* AccountListTableViewCell.swift in Sources */,
+				9A2842C92522226B00F83201 /* OneOffPaymentRequest.swift in Sources */,
 				9A51D5EE2520E43C004A3719 /* APIClient.swift in Sources */,
 				9A51D5E42520E326004A3719 /* UserDefaultsService.swift in Sources */,
 				9A51D6092520E81F004A3719 /* AccountListViewController.swift in Sources */,
