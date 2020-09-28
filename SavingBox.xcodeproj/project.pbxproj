@@ -118,6 +118,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		9A2842D02522298E00F83201 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				9A51D6182520E848004A3719 /* Account Details */,
+				9A51D60D2520E823004A3719 /* AccountList */,
+				9A51D6042520E7ED004A3719 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		9A42E54D251CF5920091FA06 = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +154,7 @@
 				9A2842B12522015600F83201 /* Services */,
 				9A51D5F52520E760004A3719 /* Networking */,
 				9A51D5DE2520E326004A3719 /* Helpers */,
-				9A51D6182520E848004A3719 /* Account Details */,
-				9A51D60D2520E823004A3719 /* AccountList */,
-				9A51D6042520E7ED004A3719 /* Login */,
+				9A2842D02522298E00F83201 /* Modules */,
 				9A42E562251CF59D0091FA06 /* Assets.xcassets */,
 				9A42E564251CF59D0091FA06 /* LaunchScreen.storyboard */,
 				9A42E567251CF59D0091FA06 /* Info.plist */,
